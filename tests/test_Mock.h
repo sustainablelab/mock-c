@@ -1,0 +1,30 @@
+#ifndef _TEST_MOCK_H
+#define _TEST_MOCK_H
+
+void SetUp_libMock(void);
+void TearDown_libMock(void);
+void RanAsHoped_returns_true_if_call_lists_match(void);
+void RanAsHoped_returns_false_if_more_expected_calls_than_actual_calls(void);
+void RanAsHoped_returns_false_if_more_actual_calls_than_expected_calls(void);
+void RanAsHoped_returns_false_if_call_names_do_not_match(void);
+void RanAsHoped_returns_false_if_a_call_expected_more_inputs(void);
+void RanAsHoped_returns_false_if_a_call_expected_less_inputs(void);
+void RanAsHoped_returns_false_if_a_call_has_the_wrong_input_value(void);
+void WhyDidItFail_reports_unexpected_calls(void);
+void WhyDidItFail_reports_when_calls_are_out_of_order(void);
+void WhyDidItFail_reports_first_unexpected_call_after_last_expected_call(void);
+void WhyDidItFail_reports_first_missed_call_after_last_actual_call(void);
+//
+void SetUp_AssertCall(void); void TearDown_AssertCall(void);
+void AssertCall_returns_false_if_call_number_exceeds_call_list(void);
+void AssertCall_returns_false_if_call_n_does_not_match_name(void);
+void AssertCall_returns_true_if_call_n_matches_name(void);
+void AssertArg_returns_false_if_call_number_exceeds_call_list(void);
+void AssertArg_returns_false_if_arg_number_exceeds_arg_list(void);
+void AssertArg_returns_true_if_arg_1_in_call_1_matches_uint8_arg_value(void);
+void AssertArg_returns_true_if_arg_2_in_call_1_matches_uint8_arg_value(void);
+void AssertArg_returns_true_if_arg_1_in_call_2_matches_uint8_arg_value(void);
+void AssertArg_returns_true_if_arg_2_in_call_2_matches_uint8_arg_value(void);
+void NumberOfActualCalls_returns_number_of_actual_calls_recorded_in_mock(void);
+
+#endif // _TEST_MOCK_H

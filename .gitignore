@@ -1,0 +1,7 @@
+*~
+.*sw?
+*.exe
+*.o
+cscope.out
+tags
+lib-tags
