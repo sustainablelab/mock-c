@@ -85,6 +85,29 @@ char const * ListAllCalls(Mock_s *self)
 /*     uint8_t n, */
 /*     char * name */
 /*     ) */
+bool SilentAssertCall(
+    Mock_s *self,
+    uint16_t n,
+    char const * name
+    )
+{
+    bool call_n_matches_name = false;
+    // Walk the list of calls to get to the nth call.
+    uint16_t this_call_num = 0;
+    GList *actual_calls = self->actual_calls;
+    while( (actual_calls != NULL) && (++this_call_num < n)){
+        actual_calls  = actual_calls->next;
+    }
+    if (actual_calls != NULL)
+    {
+        RecordedCall *nth_call = (RecordedCall *)actual_calls->data;
+        if (0 == g_strcmp0(name, nth_call->name))
+        {
+            call_n_matches_name = true;
+        }
+    }
+    return call_n_matches_name;
+}
 bool AssertCall(
     Mock_s *self,
     uint16_t n,

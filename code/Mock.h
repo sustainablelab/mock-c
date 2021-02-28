@@ -21,6 +21,7 @@ char const * WhyDidItFail(Mock_s *self);
 char const * ListAllCalls(Mock_s *self);  // alternate to WhyDidItFail()
 /* =====[ New functionality I added 2019 October ]===== */
 /* bool AssertCall(Mock_s *mock, uint8_t call_number, char * call_name); */
+bool SilentAssertCall(Mock_s *mock, uint16_t call_number, char const * call_name);
 bool AssertCall(Mock_s *mock, uint16_t call_number, char const * call_name);
 bool AssertArg(
     Mock_s *mock,
