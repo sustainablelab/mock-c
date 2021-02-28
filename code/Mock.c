@@ -115,7 +115,7 @@ bool AssertCall(
     )
 {
     /* printf("\nChecking if call %d is named %s.\n",n,name); */
-    printf("Call %d is named %s? ",n,name);
+    printf("\n- Call %d is named %s? ",n,name);
     /* Return true if call `n` is named `name`. */
     /* Return false otherwise. */
     bool call_n_matches_name = false;
@@ -133,7 +133,6 @@ bool AssertCall(
     }
     else
     {
-        printf("... ");
         RecordedCall *nth_call = (RecordedCall *)actual_calls->data;
         /* printf("- Call %d is %s.\n", this_call_num, nth_call->name); */
         // I found an instance where the simple `==` does not work.
@@ -145,14 +144,15 @@ bool AssertCall(
         if (0 == g_strcmp0(name, nth_call->name))
         {
             call_n_matches_name = true;
-            printf("Yes, call %d is %s.\n", this_call_num, nth_call->name);
+            printf("Yes.\n");
         }
         else
         {
-            printf("No, call %d is %s.\n", this_call_num, nth_call->name);
+            printf("\n    - No, call %d is %s.\n", this_call_num, nth_call->name);
         }
+        printf("\n");
     }
-        return call_n_matches_name;
+    return call_n_matches_name;
 }
 bool AssertArg(
     Mock_s *self,
@@ -167,7 +167,7 @@ bool AssertArg(
     // CheckArg is a built-in method for a RecordedArg struct.
     // This determines the data type pointed to by input `p_assert_val`.
     /* printf("\nChecking value of arg %d in call %d.\n",arg_k,call_n); */
-    printf("Value passed to call %d, arg %d? ",call_n,arg_k);
+    printf("\n- Value passed to call %d, arg %d? ",call_n,arg_k);
     bool arg_k_matches_value = false;
     /* First call is n=1. */
     uint8_t this_call_num = 0; // iterate call number starting with call 1
@@ -196,6 +196,7 @@ bool AssertArg(
         }
         else
         {
+            printf("\n");
             RecordedArg *kth_arg = (RecordedArg *)inputs->data;
             // TODO: how do I print the expected arg type and arg value?
             // Return true/false if expected and actual args have:
@@ -208,8 +209,9 @@ bool AssertArg(
             /* printf("Call %d, ", this_call_num); */
             /* printf("arg %d, ", this_arg_num); */
             /* printf("has value %s.\n", printed_arg->str); */
-            printf("%s.\n", printed_arg->str);
+            printf("    - %s is arg %d to call %s.\n", printed_arg->str, arg_k, nth_call->name);
         }
+        printf("\n");
     }
     return arg_k_matches_value;
 }
